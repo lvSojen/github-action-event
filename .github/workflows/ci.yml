@@ -1,0 +1,25 @@
+name: Event WorkFlow
+on:
+  pull_request:
+    types:
+      - opened
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: get code
+        uses: actions/checkout@v3
+      - name: install nodejs
+        uses: actions/setup-node@v3
+        with:
+          node-version: "16"
+      - name: Install dependecies
+        run: npm ci
+      - name: test code
+        run: npm tun test
+      - name: build project
+        run: npm run build
+      - name: deploy to github
+        run: echo "deploying ..."
