@@ -18,7 +18,7 @@ jobs:
       - name: Install dependecies
         run: npm ci
       - name: test code
-        run: npm tun test
+        run: npm run test
       - name: build project
         run: npm run build
       - name: deploy to github
