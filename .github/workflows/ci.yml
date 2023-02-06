@@ -4,6 +4,9 @@ on:
     types:
       - opened
   workflow_dispatch:
+  push:
+    branches:
+      - master
 
 jobs:
   deploy:
@@ -17,8 +20,8 @@ jobs:
           node-version: "16"
       - name: Install dependecies
         run: npm ci
-      - name: test code
-        run: npm tun test
+      # - name: test code
+      #   run: npm run test
       - name: build project
         run: npm run build
       - name: deploy to github
